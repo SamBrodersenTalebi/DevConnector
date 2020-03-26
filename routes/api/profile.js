@@ -96,7 +96,14 @@ router.post(
           { $set: profileFields },
           { new: true }
         );
+
+        return res.json(profile);
       }
+      //Create
+      profile = new Profile(profileFields);
+      //save new Profile
+      await Profile.save();
+      res.json(profile);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');
