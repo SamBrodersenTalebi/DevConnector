@@ -64,6 +64,7 @@ router.post(
       await user.save();
 
       //Return jsonwebtoken
+      //payload contains the claims (user id in this case)
       const payload = {
         user: {
           id: user.id
