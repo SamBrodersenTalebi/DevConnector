@@ -186,6 +186,40 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
+    //get body data
+    const {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description
+    } = req.body;
+
+    //object with data that a user submits
+    const newExp = {
+      title,
+      company,
+      location,
+      from,
+      to,
+      current,
+      description
+    };
+
+    try {
+      //fetch profile that you want to add experience to
+      const profile = await Profile.findOne({ user: req.user.id });
+      //profile.experience will be an array
+      //unshift adds elements to the beginning of an array
+      profile.experience.unshift(newExp);
+      await profile.save();
+      res.json({ profile });
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
   }
 );
 
