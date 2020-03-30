@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://kian:vov12vov@mern-ktsuo.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "mySecretToken"
+  "jwtSecret": "mySecretToken",
+  "githubClientId": "11f633e9224b22fb2f65",
+  "githubSecret": "db3269763f5d5cb1f5dfc7691cee09cc194ee5f4"
 }
